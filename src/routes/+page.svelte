@@ -1,4 +1,7 @@
 <script lang="ts">
+
+    import mutations from "../data/mutations.json";
+
     const regions = [
         { name: "V1", start: 131, end: 157 },
         { name: "V2", start: 158, end: 196 },
@@ -6,7 +9,7 @@
         { name: "V4", start: 385, end: 418 },
         { name: "V5", start: 460, end: 469 }
     ];
-    const svgStart = 50;
+    const svgStart = 1;
     const svgEnd = 950;
 
     const hxb2Start = 131;
@@ -18,38 +21,6 @@
     const referenceWeek = 4;
     const comparisonWeek = 53;
 
-    const mutations = [
-        {
-            alignment_position: 280,
-            hxb2_position: 280,
-            sequence_a: "N",
-            sequence_b: "D",
-            notation: "N280D",
-            type: "substitution",
-            region: "V2",
-            hypervariable: false
-        },
-        {
-            alignment_position: 282,
-            hxb2_position: 282,
-            sequence_a: "V",
-            sequence_b: "G",
-            notation: "V282G",
-            type: "substitution",
-            region: "V2",
-            hypervariable: true
-        },
-        {
-            alignment_position: 301,
-            hxb2_position: 301,
-            sequence_a: "N",
-            sequence_b: "S",
-            notation: "N301S",
-            type: "substitution",
-            region: "V3",
-            hypervariable: false
-        }
-    ];
 
     const substitutions = mutations.filter(
         (mutation) => mutation.type === "substitution"
@@ -96,42 +67,43 @@
     </section>
     <section class="mutations">
         <h2>Mutations</h2>
-
-        <table>
-            <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>HXB2</th>
-                    <th>Change</th>
-                    <th>Region</th>
-                    <th>Type</th>
-                </tr>
-            </thead>
-
-            <tbody>
-                {#each mutations as mutation}
-                <tr
-                    class:selected={selectedMutation === mutation.hxb2_position}
-                    onclick={() => selectedMutation = mutation.hxb2_position}
-                >       <td>{mutation.notation}</td>
-                        <td>{mutation.hxb2_position}</td>
-                        <td>{mutation.sequence_a} → {mutation.sequence_b}</td>
-                        <td>
-                            {mutation.region}
-                            {#if mutation.hypervariable}
-                                Hypervariable
-                            {/if}
-                        </td>
-                        <td>{mutation.type}</td>
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>HXB2</th>
+                        <th>Change</th>
+                        <th>Region</th>
+                        <th>Type</th>
                     </tr>
-                {/each}
-            </tbody>
-        </table>
+                </thead>
+                
+                <tbody>
+                    {#each mutations as mutation}
+                    <tr
+                        class:selected={selectedMutation === mutation.hxb2_position}
+                        onclick={() => selectedMutation = mutation.hxb2_position}
+                    >       <td>{mutation.notation}</td>
+                            <td>{mutation.hxb2_position}</td>
+                            <td>{mutation.sequence_a} → {mutation.sequence_b}</td>
+                            <td>
+                                {mutation.region}
+                                {#if mutation.hypervariable}
+                                    Hypervariable
+                                {/if}
+                            </td>
+                            <td>{mutation.type}</td>
+                        </tr>
+                    {/each}
+                </tbody>
+            </table>
+        </div>
 
     </section>
     <section class="visualization">
         <h2>Env</h2>
-        <svg viewBox="0 0 1000 180" aria-label="HIV Env sequence map">
+        <svg viewBox="0 0 1000 150" aria-label="HIV Env sequence map">
             <line
                 x1="50"
                 y1="100"
@@ -211,14 +183,14 @@
 
 <style>
     main {
-        max-width: 1000px;
+        max-width: 1100px;
         margin: 0 auto;
         padding: 4rem 2rem;
         font-family: system-ui, sans-serif;
     }
 
     header {
-        margin-bottom: 4rem;
+        margin-bottom: 2rem;
     }
 
     .eyebrow {
@@ -229,12 +201,12 @@
     }
 
     h1 {
-        font-size: 4rem;
+        font-size: 3rem;
         margin: 0;
     }
 
     .weeks {
-        font-size: 1.25rem;
+        font-size: 1rem;
     }
 
     h2 {
@@ -245,20 +217,31 @@
     margin-top: 3rem;
     }
 
+    .table-container {
+        width: 50%;
+        max-height: 500px;
+        background-color: #fcfcfc;
+        overflow-y: auto;
+    }
+
     table {
-        width: 100%;
         border-collapse: collapse;
     }
 
     th,
     td {
-        padding: 0.75rem;
+        padding: 0.5rem;
         text-align: left;
         border-bottom: 1px solid #ddd;
     }
 
     th {
         font-weight: 600;
+        position: sticky;
+        top: 0;
+        background-color: #f0f0f0; /* Crucial: Prevents body data from showing underneath */
+        z-index: 2;
+        
     }
     tr {
     cursor: pointer;
