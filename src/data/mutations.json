@@ -1,0 +1,672 @@
+[
+    {
+        "alignment_position": 4,
+        "hxb2_position": 4,
+        "sequence_a": "M",
+        "sequence_b": "R",
+        "notation": "M4R",
+        "type": "substitution",
+        "region": null,
+        "hypervariable": false
+    },
+    {
+        "alignment_position": 63,
+        "hxb2_position": 60,
+        "sequence_a": "A",
+        "sequence_b": "G",
+        "notation": "A60G",
+        "type": "substitution",
+        "region": null,
+        "hypervariable": false
+    },
+    {
+        "alignment_position": 92,
+        "hxb2_position": 87,
+        "sequence_a": "K",
+        "sequence_b": "E",
+        "notation": "K87E",
+        "type": "substitution",
+        "region": null,
+        "hypervariable": false
+    },
+    {
+        "alignment_position": 102,
+        "hxb2_position": 97,
+        "sequence_a": "K",
+        "sequence_b": "E",
+        "notation": "K97E",
+        "type": "substitution",
+        "region": null,
+        "hypervariable": false
+    },
+    {
+        "alignment_position": 137,
+        "hxb2_position": 132,
+        "sequence_a": "T",
+        "sequence_b": "I",
+        "notation": "T132I",
+        "type": "substitution",
+        "region": "V1",
+        "hypervariable": true
+    },
+    {
+        "alignment_position": 141,
+        "hxb2_position": 136,
+        "sequence_a": "A",
+        "sequence_b": "N",
+        "notation": "A136N",
+        "type": "substitution",
+        "region": "V1",
+        "hypervariable": true
+    },
+    {
+        "alignment_position": 142,
+        "hxb2_position": 137,
+        "sequence_a": "S",
+        "sequence_b": "A",
+        "notation": "S137A",
+        "type": "substitution",
+        "region": "V1",
+        "hypervariable": true
+    },
+    {
+        "alignment_position": 143,
+        "hxb2_position": 138,
+        "sequence_a": "N",
+        "sequence_b": "T",
+        "notation": "N138T",
+        "type": "substitution",
+        "region": "V1",
+        "hypervariable": true
+    },
+    {
+        "alignment_position": 144,
+        "hxb2_position": 139,
+        "sequence_a": "-",
+        "sequence_b": "N",
+        "notation": "-139N",
+        "type": "insertion",
+        "region": "V1",
+        "hypervariable": true
+    },
+    {
+        "alignment_position": 145,
+        "hxb2_position": 140,
+        "sequence_a": "-",
+        "sequence_b": "A",
+        "notation": "-140A",
+        "type": "insertion",
+        "region": "V1",
+        "hypervariable": true
+    },
+    {
+        "alignment_position": 146,
+        "hxb2_position": 141,
+        "sequence_a": "-",
+        "sequence_b": "T",
+        "notation": "-141T",
+        "type": "insertion",
+        "region": "V1",
+        "hypervariable": true
+    },
+    {
+        "alignment_position": 147,
+        "hxb2_position": 142,
+        "sequence_a": "-",
+        "sequence_b": "N",
+        "notation": "-142N",
+        "type": "insertion",
+        "region": "V1",
+        "hypervariable": true
+    },
+    {
+        "alignment_position": 156,
+        "hxb2_position": 143,
+        "sequence_a": "-",
+        "sequence_b": "A",
+        "notation": "-143A",
+        "type": "insertion",
+        "region": "V1",
+        "hypervariable": true
+    },
+    {
+        "alignment_position": 157,
+        "hxb2_position": 144,
+        "sequence_a": "-",
+        "sequence_b": "T",
+        "notation": "-144T",
+        "type": "insertion",
+        "region": "V1",
+        "hypervariable": true
+    },
+    {
+        "alignment_position": 158,
+        "hxb2_position": 145,
+        "sequence_a": "-",
+        "sequence_b": "T",
+        "notation": "-145T",
+        "type": "insertion",
+        "region": "V1",
+        "hypervariable": true
+    },
+    {
+        "alignment_position": 159,
+        "hxb2_position": 146,
+        "sequence_a": "-",
+        "sequence_b": "S",
+        "notation": "-146S",
+        "type": "insertion",
+        "region": "V1",
+        "hypervariable": true
+    },
+    {
+        "alignment_position": 160,
+        "hxb2_position": 147,
+        "sequence_a": "-",
+        "sequence_b": "D",
+        "notation": "-147D",
+        "type": "insertion",
+        "region": "V1",
+        "hypervariable": true
+    },
+    {
+        "alignment_position": 164,
+        "hxb2_position": 151,
+        "sequence_a": "I",
+        "sequence_b": "L",
+        "notation": "I151L",
+        "type": "substitution",
+        "region": "V1",
+        "hypervariable": true
+    },
+    {
+        "alignment_position": 165,
+        "hxb2_position": 152,
+        "sequence_a": "E",
+        "sequence_b": "D",
+        "notation": "E152D",
+        "type": "substitution",
+        "region": "V1",
+        "hypervariable": true
+    },
+    {
+        "alignment_position": 174,
+        "hxb2_position": 161,
+        "sequence_a": "I",
+        "sequence_b": "V",
+        "notation": "I161V",
+        "type": "substitution",
+        "region": "V2",
+        "hypervariable": false
+    },
+    {
+        "alignment_position": 201,
+        "hxb2_position": 185,
+        "sequence_a": "D",
+        "sequence_b": "G",
+        "notation": "D185G",
+        "type": "substitution",
+        "region": "V2",
+        "hypervariable": true
+    },
+    {
+        "alignment_position": 203,
+        "hxb2_position": 186.1,
+        "sequence_a": "-",
+        "sequence_b": "N",
+        "notation": "-186.1N",
+        "type": "insertion",
+        "region": "V2",
+        "hypervariable": true
+    },
+    {
+        "alignment_position": 204,
+        "hxb2_position": 186.2,
+        "sequence_a": "-",
+        "sequence_b": "S",
+        "notation": "-186.2S",
+        "type": "insertion",
+        "region": "V2",
+        "hypervariable": true
+    },
+    {
+        "alignment_position": 205,
+        "hxb2_position": 186.3,
+        "sequence_a": "-",
+        "sequence_b": "S",
+        "notation": "-186.3S",
+        "type": "insertion",
+        "region": "V2",
+        "hypervariable": true
+    },
+    {
+        "alignment_position": 206,
+        "hxb2_position": 186.4,
+        "sequence_a": "-",
+        "sequence_b": "G",
+        "notation": "-186.4G",
+        "type": "insertion",
+        "region": "V2",
+        "hypervariable": true
+    },
+    {
+        "alignment_position": 222,
+        "hxb2_position": 202,
+        "sequence_a": "T",
+        "sequence_b": "A",
+        "notation": "T202A",
+        "type": "substitution",
+        "region": null,
+        "hypervariable": false
+    },
+    {
+        "alignment_position": 228,
+        "hxb2_position": 208,
+        "sequence_a": "V",
+        "sequence_b": "I",
+        "notation": "V208I",
+        "type": "substitution",
+        "region": null,
+        "hypervariable": false
+    },
+    {
+        "alignment_position": 255,
+        "hxb2_position": 234,
+        "sequence_a": "T",
+        "sequence_b": "N",
+        "notation": "T234N",
+        "type": "substitution",
+        "region": null,
+        "hypervariable": false
+    },
+    {
+        "alignment_position": 296,
+        "hxb2_position": 275,
+        "sequence_a": "E",
+        "sequence_b": "K",
+        "notation": "E275K",
+        "type": "substitution",
+        "region": null,
+        "hypervariable": false
+    },
+    {
+        "alignment_position": 299,
+        "hxb2_position": 278,
+        "sequence_a": "T",
+        "sequence_b": "S",
+        "notation": "T278S",
+        "type": "substitution",
+        "region": null,
+        "hypervariable": false
+    },
+    {
+        "alignment_position": 300,
+        "hxb2_position": 279,
+        "sequence_a": "N",
+        "sequence_b": "D",
+        "notation": "N279D",
+        "type": "substitution",
+        "region": null,
+        "hypervariable": false
+    },
+    {
+        "alignment_position": 302,
+        "hxb2_position": 281,
+        "sequence_a": "V",
+        "sequence_b": "S",
+        "notation": "V281S",
+        "type": "substitution",
+        "region": null,
+        "hypervariable": false
+    },
+    {
+        "alignment_position": 314,
+        "hxb2_position": 293,
+        "sequence_a": "K",
+        "sequence_b": "E",
+        "notation": "K293E",
+        "type": "substitution",
+        "region": null,
+        "hypervariable": false
+    },
+    {
+        "alignment_position": 316,
+        "hxb2_position": 295,
+        "sequence_a": "E",
+        "sequence_b": "V",
+        "notation": "E295V",
+        "type": "substitution",
+        "region": null,
+        "hypervariable": false
+    },
+    {
+        "alignment_position": 322,
+        "hxb2_position": 300,
+        "sequence_a": "N",
+        "sequence_b": "G",
+        "notation": "N300G",
+        "type": "substitution",
+        "region": "V3",
+        "hypervariable": false
+    },
+    {
+        "alignment_position": 324,
+        "hxb2_position": 302,
+        "sequence_a": "K",
+        "sequence_b": "N",
+        "notation": "K302N",
+        "type": "substitution",
+        "region": "V3",
+        "hypervariable": false
+    },
+    {
+        "alignment_position": 327,
+        "hxb2_position": 305,
+        "sequence_a": "T",
+        "sequence_b": "K",
+        "notation": "T305K",
+        "type": "substitution",
+        "region": "V3",
+        "hypervariable": false
+    },
+    {
+        "alignment_position": 330,
+        "hxb2_position": 308,
+        "sequence_a": "R",
+        "sequence_b": "G",
+        "notation": "R308G",
+        "type": "substitution",
+        "region": "V3",
+        "hypervariable": false
+    },
+    {
+        "alignment_position": 344,
+        "hxb2_position": 321.1,
+        "sequence_a": "Q",
+        "sequence_b": "E",
+        "notation": "Q321.1E",
+        "type": "substitution",
+        "region": "V3",
+        "hypervariable": false
+    },
+    {
+        "alignment_position": 353,
+        "hxb2_position": 330,
+        "sequence_a": "Y",
+        "sequence_b": "H",
+        "notation": "Y330H",
+        "type": "substitution",
+        "region": "V3",
+        "hypervariable": false
+    },
+    {
+        "alignment_position": 357,
+        "hxb2_position": 334,
+        "sequence_a": "N",
+        "sequence_b": "S",
+        "notation": "N334S",
+        "type": "substitution",
+        "region": null,
+        "hypervariable": false
+    },
+    {
+        "alignment_position": 370,
+        "hxb2_position": 347,
+        "sequence_a": "K",
+        "sequence_b": "E",
+        "notation": "K347E",
+        "type": "substitution",
+        "region": null,
+        "hypervariable": false
+    },
+    {
+        "alignment_position": 380,
+        "hxb2_position": 356,
+        "sequence_a": "H",
+        "sequence_b": "-",
+        "notation": "H356-",
+        "type": "deletion",
+        "region": null,
+        "hypervariable": false
+    },
+    {
+        "alignment_position": 381,
+        "hxb2_position": 357,
+        "sequence_a": "K",
+        "sequence_b": "R",
+        "notation": "K357R",
+        "type": "substitution",
+        "region": null,
+        "hypervariable": false
+    },
+    {
+        "alignment_position": 419,
+        "hxb2_position": 394,
+        "sequence_a": "T",
+        "sequence_b": "N",
+        "notation": "T394N",
+        "type": "substitution",
+        "region": "V4",
+        "hypervariable": false
+    },
+    {
+        "alignment_position": 420,
+        "hxb2_position": 395,
+        "sequence_a": "Y",
+        "sequence_b": "-",
+        "notation": "Y395-",
+        "type": "deletion",
+        "region": "V4",
+        "hypervariable": false
+    },
+    {
+        "alignment_position": 421,
+        "hxb2_position": 396,
+        "sequence_a": "M",
+        "sequence_b": "-",
+        "notation": "M396-",
+        "type": "deletion",
+        "region": "V4",
+        "hypervariable": true
+    },
+    {
+        "alignment_position": 422,
+        "hxb2_position": 397,
+        "sequence_a": "A",
+        "sequence_b": "-",
+        "notation": "A397-",
+        "type": "deletion",
+        "region": "V4",
+        "hypervariable": true
+    },
+    {
+        "alignment_position": 423,
+        "hxb2_position": 398,
+        "sequence_a": "N",
+        "sequence_b": "-",
+        "notation": "N398-",
+        "type": "deletion",
+        "region": "V4",
+        "hypervariable": true
+    },
+    {
+        "alignment_position": 428,
+        "hxb2_position": 403,
+        "sequence_a": "A",
+        "sequence_b": "V",
+        "notation": "A403V",
+        "type": "substitution",
+        "region": "V4",
+        "hypervariable": true
+    },
+    {
+        "alignment_position": 433,
+        "hxb2_position": 408,
+        "sequence_a": "T",
+        "sequence_b": "N",
+        "notation": "T408N",
+        "type": "substitution",
+        "region": "V4",
+        "hypervariable": true
+    },
+    {
+        "alignment_position": 434,
+        "hxb2_position": 409,
+        "sequence_a": "N",
+        "sequence_b": "-",
+        "notation": "N409-",
+        "type": "deletion",
+        "region": "V4",
+        "hypervariable": true
+    },
+    {
+        "alignment_position": 435,
+        "hxb2_position": 410,
+        "sequence_a": "S",
+        "sequence_b": "-",
+        "notation": "S410-",
+        "type": "deletion",
+        "region": "V4",
+        "hypervariable": true
+    },
+    {
+        "alignment_position": 436,
+        "hxb2_position": 411,
+        "sequence_a": "T",
+        "sequence_b": "N",
+        "notation": "T411N",
+        "type": "substitution",
+        "region": "V4",
+        "hypervariable": false
+    },
+    {
+        "alignment_position": 491,
+        "hxb2_position": 460,
+        "sequence_a": "-",
+        "sequence_b": "N",
+        "notation": "-460N",
+        "type": "insertion",
+        "region": "V5",
+        "hypervariable": true
+    },
+    {
+        "alignment_position": 492,
+        "hxb2_position": 461,
+        "sequence_a": "-",
+        "sequence_b": "E",
+        "notation": "-461E",
+        "type": "insertion",
+        "region": "V5",
+        "hypervariable": true
+    },
+    {
+        "alignment_position": 493,
+        "hxb2_position": 462,
+        "sequence_a": "K",
+        "sequence_b": "T",
+        "notation": "K462T",
+        "type": "substitution",
+        "region": "V5",
+        "hypervariable": true
+    },
+    {
+        "alignment_position": 494,
+        "hxb2_position": 463,
+        "sequence_a": "N",
+        "sequence_b": "K",
+        "notation": "N463K",
+        "type": "substitution",
+        "region": "V5",
+        "hypervariable": true
+    },
+    {
+        "alignment_position": 495,
+        "hxb2_position": 464,
+        "sequence_a": "N",
+        "sequence_b": "D",
+        "notation": "N464D",
+        "type": "substitution",
+        "region": "V5",
+        "hypervariable": true
+    },
+    {
+        "alignment_position": 496,
+        "hxb2_position": 465,
+        "sequence_a": "T",
+        "sequence_b": "P",
+        "notation": "T465P",
+        "type": "substitution",
+        "region": "V5",
+        "hypervariable": true
+    },
+    {
+        "alignment_position": 502,
+        "hxb2_position": 471,
+        "sequence_a": "G",
+        "sequence_b": "I",
+        "notation": "G471I",
+        "type": "substitution",
+        "region": null,
+        "hypervariable": false
+    },
+    {
+        "alignment_position": 546,
+        "hxb2_position": 513.1,
+        "sequence_a": "-",
+        "sequence_b": "V",
+        "notation": "-513.1V",
+        "type": "insertion",
+        "region": null,
+        "hypervariable": false
+    },
+    {
+        "alignment_position": 653,
+        "hxb2_position": 620,
+        "sequence_a": "G",
+        "sequence_b": "N",
+        "notation": "G620N",
+        "type": "substitution",
+        "region": null,
+        "hypervariable": false
+    },
+    {
+        "alignment_position": 673,
+        "hxb2_position": 640,
+        "sequence_a": "E",
+        "sequence_b": "S",
+        "notation": "E640S",
+        "type": "substitution",
+        "region": null,
+        "hypervariable": false
+    },
+    {
+        "alignment_position": 790,
+        "hxb2_position": 756,
+        "sequence_a": "V",
+        "sequence_b": "A",
+        "notation": "V756A",
+        "type": "substitution",
+        "region": null,
+        "hypervariable": false
+    },
+    {
+        "alignment_position": 801,
+        "hxb2_position": 767,
+        "sequence_a": "I",
+        "sequence_b": "L",
+        "notation": "I767L",
+        "type": "substitution",
+        "region": null,
+        "hypervariable": false
+    },
+    {
+        "alignment_position": 854,
+        "hxb2_position": 813,
+        "sequence_a": "S",
+        "sequence_b": "R",
+        "notation": "S813R",
+        "type": "substitution",
+        "region": null,
+        "hypervariable": false
+    }
+]
