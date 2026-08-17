@@ -65,118 +65,128 @@
             {deletions} deletions
         </p>
     </section>
-    <section class="mutations">
-        <h2>Mutations</h2>
-        <div class="table-container">
-            <table>
-                <thead>
-                    <tr>
-                        <th>Name</th>
-                        <th>HXB2</th>
-                        <th>Change</th>
-                        <th>Region</th>
-                        <th>Type</th>
-                    </tr>
-                </thead>
-                
-                <tbody>
-                    {#each mutations as mutation}
-                    <tr
-                        class:selected={selectedMutation === mutation.hxb2_position}
-                        onclick={() => selectedMutation = mutation.hxb2_position}
-                    >       <td>{mutation.notation}</td>
-                            <td>{mutation.hxb2_position}</td>
-                            <td>{mutation.sequence_a} → {mutation.sequence_b}</td>
-                            <td>
-                                {mutation.region}
-                                {#if mutation.hypervariable}
-                                    Hypervariable
-                                {/if}
-                            </td>
-                            <td>{mutation.type}</td>
+
+    <div class="analysis-grid">
+
+        <section class="mutations">
+            <h2>Mutations</h2>
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>HXB2</th>
+                            <th>Change</th>
+                            <th>Region</th>
+                            <th>Type</th>
                         </tr>
+                    </thead>
+                    
+                    <tbody>
+                        {#each mutations as mutation}
+                        <tr
+                            class:selected={selectedMutation === mutation.hxb2_position}
+                            onclick={() => selectedMutation = mutation.hxb2_position}
+                        >       <td>{mutation.notation}</td>
+                                <td>{mutation.hxb2_position}</td>
+                                <td>{mutation.sequence_a} → {mutation.sequence_b}</td>
+                                <td>
+                                    {mutation.region}
+                                    {#if mutation.hypervariable}
+                                        Hypervariable
+                                    {/if}
+                                </td>
+                                <td>{mutation.type}</td>
+                            </tr>
+                        {/each}
+                    </tbody>
+                </table>
+            </div>
+
+        </section>
+
+        <section class="visualization">
+            <h2>Env</h2>
+            <div class="visualization-container">
+                <svg viewBox="0 0 1000 150" aria-label="HIV Env sequence map">
+                    <line
+                        x1="50"
+                        y1="100"
+                        x2="950"
+                        y2="100"
+                        stroke="black"
+                        stroke-width="3"
+                    />
+                    {#each regions as region}
+                        <line
+                            x1={mapPosition(region.start)}
+                            y1="55"
+                            x2={mapPosition(region.end)}
+                            y2="55"
+                            stroke="black"
+                            stroke-width="3"
+                        />
+
+                        <text
+                            x={mapPosition((region.start + region.end) / 2)}
+                            y="45"
+                            text-anchor="middle"
+                        >
+                            {region.name}
+                        </text>
+
+                        <text
+                            x={mapPosition(region.start)}
+                            y="75"
+                            text-anchor="middle"
+                        >
+                            {region.start}
+                        </text>
+
+                        <text
+                            x={mapPosition(region.end)}
+                            y="75"
+                            text-anchor="middle"
+                        >
+                            {region.end}
+                        </text>
                     {/each}
-                </tbody>
-            </table>
-        </div>
 
-    </section>
-    <section class="visualization">
-        <h2>Env</h2>
-        <svg viewBox="0 0 1000 150" aria-label="HIV Env sequence map">
-            <line
-                x1="50"
-                y1="100"
-                x2="950"
-                y2="100"
-                stroke="black"
-                stroke-width="3"
-            />
-            {#each regions as region}
-                <line
-                    x1={mapPosition(region.start)}
-                    y1="55"
-                    x2={mapPosition(region.end)}
-                    y2="55"
-                    stroke="black"
-                    stroke-width="3"
-                />
+                    {#each mutations as mutation}
+                        <circle
+                            cx={mapPosition(mutation.hxb2_position)}
+                            cy="100"
+                            r="6"
+                            class:selected={selectedMutation === mutation.hxb2_position}
+                            role="button"
+                            tabindex="0"
+                            onclick={() => selectedMutation = mutation.hxb2_position}
+                            onmouseenter={() => hoveredMutation = mutation.hxb2_position}
+                            onmouseleave={() => hoveredMutation = null}   
+                            onkeydown={(event) => {
+                                if (event.key === "Enter" || event.key === " " || event.key === "Return") {
+                                    selectedMutation = mutation.hxb2_position;
+                                }
+                            }}
+                        />
+                        {#if hoveredMutation === mutation.hxb2_position}
+                            <text
+                                x={mapPosition(mutation.hxb2_position)}
+                                y="135"
+                                text-anchor="middle"
+                            >
+                                {mutation.notation}
+                            </text>
+                        {/if}
+                    {/each}
+                    
+                </svg>
+            </div>
+        </section>
+    </div>
 
-                <text
-                    x={mapPosition((region.start + region.end) / 2)}
-                    y="45"
-                    text-anchor="middle"
-                >
-                    {region.name}
-                </text>
 
-                <text
-                    x={mapPosition(region.start)}
-                    y="75"
-                    text-anchor="middle"
-                >
-                    {region.start}
-                </text>
 
-                <text
-                    x={mapPosition(region.end)}
-                    y="75"
-                    text-anchor="middle"
-                >
-                    {region.end}
-                </text>
-            {/each}
-
-            {#each mutations as mutation}
-                <circle
-                    cx={mapPosition(mutation.hxb2_position)}
-                    cy="100"
-                    r="6"
-                    class:selected={selectedMutation === mutation.hxb2_position}
-                    role="button"
-                    tabindex="0"
-                    onclick={() => selectedMutation = mutation.hxb2_position}
-                    onmouseenter={() => hoveredMutation = mutation.hxb2_position}
-                    onmouseleave={() => hoveredMutation = null}   
-                    onkeydown={(event) => {
-                        if (event.key === "Enter" || event.key === " " || event.key === "Return") {
-                            selectedMutation = mutation.hxb2_position;
-                        }
-                    }}
-                />
-                {#if hoveredMutation === mutation.hxb2_position}
-                    <text
-                        x={mapPosition(mutation.hxb2_position)}
-                        y="135"
-                        text-anchor="middle"
-                    >
-                        {mutation.notation}
-                    </text>
-                {/if}
-            {/each}
-            
-        </svg>
-    </section>
     
 
 </main>
@@ -214,25 +224,38 @@
         font-size: 2rem;
     }
     .mutations {
-    margin-top: 3rem;
+        margin-top: 3rem;
     }
 
+    /* top two cols */
+    .analysis-grid {
+        display: grid;
+        grid-template-columns: 400px minmax(0, 1fr);
+        gap: 2rem;
+        align-items: start;
+    }
+
+    /* table */
+
     .table-container {
-        width: 50%;
+        width: 100%;
         max-height: 500px;
         background-color: #fcfcfc;
         overflow-y: auto;
     }
 
     table {
+        width: 100%;
         border-collapse: collapse;
     }
 
     th,
     td {
-        padding: 0.5rem;
+        padding: 0.4rem;
         text-align: left;
         border-bottom: 1px solid #ddd;
+        font-size: 0.85rem;
+        cursor: pointer;
     }
 
     th {
@@ -243,12 +266,26 @@
         z-index: 2;
         
     }
-    tr {
-    cursor: pointer;
-    }
+
 
     tr.selected {
+        background: #eaeeff;
+    }
+
+    tr:hover:not(.selected) {
         background: #f0f0f0;
+    }
+
+    /* svg */
+    .visualization-container {
+        width: 100%;
+        overflow-x: auto;
+        overflow-y: hidden;
+    }
+    .visualization-container svg {
+        width: 1000px;
+        height: 150px;
+        display: block;
     }
     circle {
         cursor: pointer;
