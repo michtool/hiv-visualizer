@@ -14,17 +14,23 @@
         { value: "deletion", label: "Deletion" }
     ];
 
+    // for sliders
+    let zoom = $state(1);
+    let tickWidth = $state(2);
 
+    // svg drawing
     const svgStart = 25;
     const svgEnd = 975;
 
     const hxb2Start = 1;
     const hxb2End = 856;
 
+    // tooltip
     let hoveredMutation = $state<number | null>(null);
     let tooltipX = $state(0);
     let tooltipY = $state(0);
 
+    // color coding
     let colorBy = $state("none");
     let distinguishHypervariable = $state(false);
 
@@ -32,7 +38,8 @@
         return (
             svgStart +
             ((position - hxb2Start) / (hxb2End - hxb2Start)) *
-            (svgEnd - svgStart)
+            (svgEnd - svgStart) *
+            zoom
         );
     }
 
@@ -95,16 +102,43 @@
 
 <section class="visualization">
     <h2>Env</h2>
+    <label for="zoom">Zoom</label>
+
+    <input
+        id="zoom"
+        type="range"
+        min="0.75"
+        max="8"
+        step="0.25"
+        bind:value={zoom}
+    />
+
+    <span>{zoom}×</span>
+
+    <label for="tick-width">Tick width</label>
+
+    <input
+        id="tick-width"
+        type="range"
+        min="1"
+        max="6"
+        step="0.5"
+        bind:value={tickWidth}
+    />
+
+    <span>{tickWidth}px</span>
+
+
     <div class="visualization-container">
-        <svg viewBox="0 0 1000 150" aria-label="HIV Env sequence map">
-            <line
-                x1={svgStart}
-                y1="100"
-                x2={svgEnd}
-                y2="100"
-                stroke="black"
-                stroke-width="3"
-            />
+        <svg viewBox={`0 0 ${1000 * zoom} 150`} aria-label="HIV Env sequence map" style:width={`${1000 * zoom}px`}>
+        <line
+            x1={svgStart}
+            y1="100"
+            x2={svgEnd * zoom}
+            y2="100"
+            stroke="black"
+            stroke-width="3"
+        />
             {#each regions as region}
                 <line
                     x1={mapPosition(region.start)}
@@ -128,17 +162,18 @@
             {#each mutations as mutation}
                 <line class={`mutation-mark ${getMutationClass(mutation)}`}
                     x1={mapPosition(mutation.hxb2_position)}
-                    y1="92"
+                    y1={selectedMutation === mutation.hxb2_position ? 86 : 92}
                     x2={mapPosition(mutation.hxb2_position)}
-                    y2="108"
+                    y2={selectedMutation === mutation.hxb2_position ? 114 : 108}
                     class:selected={selectedMutation === mutation.hxb2_position}
+                    stroke-width={tickWidth}
                     role="button"
                     tabindex="0"
-                    onclick={() => selectedMutation = mutation.hxb2_position}
+                    onclick={() => onSelect(mutation.hxb2_position)}
                     onmouseleave={() => hoveredMutation = null}
                     onkeydown={(event) => {
                         if (event.key === "Enter" || event.key === " " || event.key === "Return") {
-                            selectedMutation = mutation.hxb2_position;
+                            onSelect(mutation.hxb2_position);
                         }
                     }}
                     onmouseenter={(event) => {
@@ -214,6 +249,16 @@
 
     }
 
+    /* zoom */
+    .zoom-control {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        margin-bottom: 0.75rem;
+        font-size: 0.8rem;
+        cursor: pointer;
+    }
+
     .mutation-tooltip {
         position: fixed;
         top: 10px;
@@ -245,16 +290,15 @@
 
     .mutation-mark {
         cursor: pointer;
-        stroke-width: 2px;
         stroke: black;
     }
 
-    .mutation-mark.selected {
-        stroke-width: 4px; /* not sure if thickness change makes sense here */
+    .mutation-mark:focus {
+        outline: none;
     }
 
     .mutation-mark:hover {
-        stroke:darkgray;
+        filter: brightness(0.75);
     }
 
     /* mutation mark color coding */
