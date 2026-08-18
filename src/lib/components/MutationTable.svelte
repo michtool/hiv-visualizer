@@ -10,6 +10,7 @@
                 <tr>
                     <th>Name</th>
                     <th>HXB2</th>
+                    <th>Algn.</th>
                     <th>Change</th>
                     <th>Region</th>
                     <th>Type</th>
@@ -23,11 +24,12 @@
                     onclick={() => onSelect(mutation.hxb2_position)}
                 >       <td>{mutation.notation}</td>
                         <td>{mutation.hxb2_position}</td>
+                        <td>{mutation.alignment_position}</td>
                         <td>{mutation.sequence_a} → {mutation.sequence_b}</td>
                         <td>
                             {mutation.region}
                             {#if mutation.hypervariable}
-                                Hypervariable
+                                HVR <!-- maybe change to Hypervariable (depends on space)-->
                             {/if}
                         </td>
                         <td>{mutation.type}</td>

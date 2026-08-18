@@ -104,7 +104,7 @@
     /* top two cols */
     .analysis-grid {
         display: grid;
-        grid-template-columns: 400px minmax(0, 1fr);
+        grid-template-columns: 430px minmax(0, 1fr);
         gap: 2rem;
         align-items: start;
     }
