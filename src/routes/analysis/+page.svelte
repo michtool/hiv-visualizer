@@ -4,6 +4,19 @@
     import MutationTable from "$lib/components/MutationTable.svelte";
     import MutationFilter from "$lib/components/MutationFilter.svelte";
     import EnvVisualization from "$lib/components/EnvVisualization.svelte";
+    import AlignmentViewer from "$lib/components/AlignmentViewer.svelte";
+
+    import { page } from '$app/state';
+
+    import parsed from "../../data/parsed.json";
+
+    const hxb2Name = parsed[0]?.name;
+    const referenceName = $derived(page.url.searchParams.get('reference') ?? '');
+    const sampleName = $derived(page.url.searchParams.get('sample') ?? '');
+
+    const hxb2Seq = parsed[0]?.sequence;
+    const referenceSeq = parsed.find(item => item.name === referenceName)?.sequence;
+    const sampleSeq = parsed.find(item => item.name === sampleName)?.sequence;
 
     let selectedMutation = $state<number | null>(null);
     
@@ -28,12 +41,8 @@
 
 <main>
     <header>
-        <p class="eyebrow">HIV Env Evolution</p>
-
-        <h1>CH505</h1>
-
         <p class="weeks">
-            Week {referenceWeek} → Week {comparisonWeek}
+            {referenceName} → {sampleName}
         </p>
     </header>
 
@@ -47,19 +56,22 @@
         </p>
     </section>
 
+    <AlignmentViewer
+        hxb2={{ name: hxb2Name, sequence: hxb2Seq}}
+        reference={{ name: referenceName, sequence: referenceSeq }}
+        sample={{ name: sampleName, sequence: sampleSeq }}
+    />
 
     <MutationFilter />
 
     <div class="analysis-grid">
 
-        <!-- where the table used to be -->
         <MutationTable
             {mutations}
             {selectedMutation}
             onSelect={(position: number) => selectedMutation = position}
         />
 
-        <!-- where the svg used to be -->
         <EnvVisualization
             {mutations}
             {selectedMutation}

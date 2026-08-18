@@ -4,7 +4,7 @@
         console.log(fastaText);
     }
 </script>
-<a href="/analysis">Go to analysis</a>
+<a href="/select">Go to selection page (will be next in the flow)</a>
 <h1>HIV Visualizer</h1>
 <textarea
     bind:value={fastaText}
