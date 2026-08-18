@@ -101,7 +101,7 @@
 </script>
 
 <section class="visualization">
-    <h2>Env</h2>
+    <h2>Sequence Overview</h2>
     <label for="zoom">Zoom</label>
 
     <input
