@@ -9,14 +9,16 @@
         { name: "V4", start: 385, end: 418 },
         { name: "V5", start: 460, end: 469 }
     ];
-    const svgStart = 1;
-    const svgEnd = 950;
+    const svgStart = 25;
+    const svgEnd = 975;
 
-    const hxb2Start = 131;
-    const hxb2End = 469;
+    const hxb2Start = 1;
+    const hxb2End = 856;
 
-    let hoveredMutation = $state<number | null>(null);
     let selectedMutation = $state<number | null>(null);
+    let hoveredMutation = $state<number | null>(null);
+    let tooltipX = $state(0);
+    let tooltipY = $state(0);
     
     const referenceWeek = 4;
     const comparisonWeek = 53;
@@ -37,12 +39,15 @@
     const totalChanges = mutations.length;
 
     function mapPosition(position: number) {
-    return (
-        svgStart +
-        ((position - hxb2Start) / (hxb2End - hxb2Start)) *
+        return (
+            svgStart +
+            ((position - hxb2Start) / (hxb2End - hxb2Start)) *
             (svgEnd - svgStart)
-    );
-}
+        );
+    }
+    function tooltipPosition(position: number) {
+        return `${(mapPosition(position) / 1000) * 100}%`;
+    }
 </script>
 
 <main>
@@ -110,9 +115,9 @@
             <div class="visualization-container">
                 <svg viewBox="0 0 1000 150" aria-label="HIV Env sequence map">
                     <line
-                        x1="50"
+                        x1={svgStart}
                         y1="100"
-                        x2="950"
+                        x2={svgEnd}
                         y2="100"
                         stroke="black"
                         stroke-width="3"
@@ -153,34 +158,58 @@
                     {/each}
 
                     {#each mutations as mutation}
-                        <circle
-                            cx={mapPosition(mutation.hxb2_position)}
-                            cy="100"
-                            r="6"
+                        <line class="mutation-mark"
+                            x1={mapPosition(mutation.hxb2_position)}
+                            y1="92"
+                            x2={mapPosition(mutation.hxb2_position)}
+                            y2="108"
                             class:selected={selectedMutation === mutation.hxb2_position}
                             role="button"
                             tabindex="0"
                             onclick={() => selectedMutation = mutation.hxb2_position}
-                            onmouseenter={() => hoveredMutation = mutation.hxb2_position}
-                            onmouseleave={() => hoveredMutation = null}   
+                            onmouseleave={() => hoveredMutation = null}
                             onkeydown={(event) => {
                                 if (event.key === "Enter" || event.key === " " || event.key === "Return") {
                                     selectedMutation = mutation.hxb2_position;
                                 }
                             }}
+                            onmouseenter={(event) => {
+                                hoveredMutation = mutation.hxb2_position;
+                                tooltipX = event.clientX;
+                                tooltipY = event.clientY;
+                            }}
                         />
-                        {#if hoveredMutation === mutation.hxb2_position}
-                            <text
-                                x={mapPosition(mutation.hxb2_position)}
-                                y="135"
-                                text-anchor="middle"
-                            >
-                                {mutation.notation}
-                            </text>
-                        {/if}
+
                     {/each}
                     
                 </svg>
+                    {#if hoveredMutation !== null}
+                        {#each mutations as mutation}
+                            {#if hoveredMutation === mutation.hxb2_position}
+                                <div
+                                    class="mutation-tooltip"
+                                    style:left={`${tooltipX - 50}px`}
+                                    style:top={`${tooltipY + 20}px`}
+                                >
+                                    <strong>{mutation.notation}</strong>
+                                    <span>HXB2 {mutation.hxb2_position}</span>
+                                    <span>Alignment {mutation.alignment_position}</span>
+                                    <span>{mutation.sequence_a} → {mutation.sequence_b}</span>
+
+                                    {#if mutation.region}
+                                        <span>
+                                            {mutation.region}
+                                            {#if mutation.hypervariable}
+                                                Hypervariable
+                                            {/if}
+                                        </span>
+                                    {/if}
+                                </div>
+                            {/if}
+                        {/each}
+                    {/if}
+
+
             </div>
         </section>
     </div>
@@ -279,22 +308,50 @@
     /* svg */
     .visualization-container {
         width: 100%;
-        overflow-x: auto;
+        overflow-x: scroll;
         overflow-y: hidden;
+        position: relative;
+
+    }
+
+
+    .mutation-tooltip {
+        position: fixed;
+        top: 10px;
+        left: 50%;
+
+        display: flex;
+        flex-direction: column;
+        gap: 0.15rem;
+
+        padding: 0.6rem 0.75rem;
+
+        background: white;
+        border: 1px solid #ddd;
+        border-radius: 6px;
+
+        font-size: 0.8rem;
+        white-space: nowrap;
+
+
+        pointer-events: none;
     }
     .visualization-container svg {
         width: 1000px;
         height: 150px;
         display: block;
+        background-color: #fcfcfc;
     }
-    circle {
+    .mutation-mark {
         cursor: pointer;
+        stroke-width: 3px;
+        stroke: black;
     }
 
-    circle.selected {
-        fill:yellow;
+    .mutation-mark.selected {
+        stroke:yellow;
     }
-    circle:hover {
-        fill:darkgray;
+    .mutation-mark:hover {
+        stroke:darkgray;
     }
 </style>
