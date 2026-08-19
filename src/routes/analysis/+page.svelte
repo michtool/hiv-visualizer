@@ -8,6 +8,17 @@
 
     import { page } from '$app/state';
 
+    type Mutation = {
+        alignment_position: number;
+        hxb2_position: number;
+        sequence_a: string;
+        sequence_b: string;
+        notation: string;
+        type: string;
+        region: string;
+        hypervariable: boolean;
+    };
+
     import parsed from "../../data/parsed.json";
 
     const hxb2Name = parsed[0]?.name;

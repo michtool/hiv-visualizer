@@ -2,15 +2,27 @@
     let { hxb2, reference, sample } = $props();
 </script>
 <main>
+    <h2>Alignment</h2>
     <div class="alignment-container">
         <div class="sequence-name">{hxb2.name}</div>
-        <div class="sequence">{hxb2.sequence}</div>
+        <div class="sequence">
+            {#each hxb2.sequence as residue}
+                <span>{residue}</span>
+            {/each}
+        </div>
 
         <div class="sequence-name">{reference.name} (ref)</div>
-        <div class="sequence">{reference.sequence}</div>
-
+        <div class="sequence">
+            {#each reference.sequence as residue}
+                <span>{residue}</span>
+            {/each}
+        </div>
         <div class="sequence-name">{sample.name}</div>
-        <div class="sequence">{sample.sequence}</div>
+        <div class="sequence">
+            {#each sample.sequence as residue}
+                <span>{residue}</span>
+            {/each}
+        </div>
     </div>
 </main>
 <style>
@@ -42,5 +54,11 @@
         padding: 5px;
         font-family: monospace;
         letter-spacing: 1px;
+    }
+
+    .sequence span {
+        display: inline-block;
+        width: 2ch;
+        text-align: center;
     }
 </style>
