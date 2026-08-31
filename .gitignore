@@ -24,3 +24,5 @@ vite.config.ts.timestamp-*
 
 # local testing data
 /src/data
+
+/.idea

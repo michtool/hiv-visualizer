@@ -1,16 +1,59 @@
 <script lang="ts">
+
+    import FastaInput from "$lib/components/input/FastaInput.svelte";
+    import MetadataReview from "$lib/components/input/MetadataReview.svelte";
+
+    type Stage = "input" | "metadata";
+
+    type MetadataConfiguration = {
+        delimiter: string | null;
+        fields: {
+            index: number;
+            type: "subject" | "timepoint" | "sequence_id" | "ignore";
+        }[];
+    };
+
+    let stage = $state<Stage>("input");
     let fastaText = $state("");
-    function analyze() {
-        console.log(fastaText);
+
+    function handleAnalyze(text: string) {
+        fastaText = text;
+        stage = "metadata";
+    }
+
+    function handleBack() {
+        stage = "input";
+    }
+
+    function handleConfirm(
+        configuration: MetadataConfiguration
+    ) {
+        console.log({
+            fastaText,
+            configuration
+        });
+
+        // TODO:
+        // Send the complete FASTA + configuration to the backend.
+        // The backend should return the canonical dataset JSON
+        // used throughout EnvIsion.
+
+        window.location.href = "/analysis";
     }
 </script>
-<a href="/select">Go to selection page (will be next in the flow)</a>
-<h1>HIV Visualizer</h1>
-<textarea
-    bind:value={fastaText}
-    placeholder={">HXB2\nMRVKE---KYQHL...\n>Sequence_1\n..."}
-></textarea>
+{#if stage === "input"}
 
-<button disabled={!fastaText.trim()} onclick={analyze}>
-    Analyze Alignment
-</button>
+    <FastaInput
+        value={fastaText}
+        onAnalyze={handleAnalyze}
+    />
+
+{:else}
+
+    <MetadataReview
+        {fastaText}
+        onBack={handleBack}
+        onConfirm={handleConfirm}
+    />
+
+{/if}

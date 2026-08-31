@@ -103,18 +103,6 @@
         margin-bottom: 2rem;
     }
 
-    .eyebrow {
-        font-size: 0.85rem;
-        text-transform: uppercase;
-        letter-spacing: 0.1em;
-        margin-bottom: 0.5rem;
-    }
-
-    h1 {
-        font-size: 3rem;
-        margin: 0;
-    }
-
     .weeks {
         font-size: 1rem;
     }
